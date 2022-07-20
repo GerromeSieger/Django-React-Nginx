@@ -15,7 +15,7 @@ SECRET_KEY = '@%^0i-d3o%2oir)6w7*s5)2r01&$zou+a2o@o(p$8wwy$4$57u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -27,10 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'api',
-
+     'api',	
     'rest_framework',
-
     'corsheaders',
 ]
 
@@ -51,7 +49,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
 
-        'DIRS': [],
+        'DIRS': os.path.join(BASE_DIR, 'frontend/buil'),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,9 +114,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, 'frontend/build/static')
-]
+STATIC_ROOT = '~/django-react/static'
+STATIC_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static'),]
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
