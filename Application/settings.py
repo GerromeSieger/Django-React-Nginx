@@ -1,6 +1,7 @@
    # 'DIRS': [os.path.join(BASE_DIR,'frontend/build')],
 
 import os
+from pickle import FALSE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,7 +50,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
 
-        'DIRS': os.path.join(BASE_DIR, 'frontend/buil'),
+        'DIRS': os.path.join(BASE_DIR, 'frontend/build'),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,7 +115,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '~/django-react/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static'),]
 
 CORS_ORIGIN_WHITELIST = [
