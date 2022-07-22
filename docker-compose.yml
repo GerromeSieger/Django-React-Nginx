@@ -1,32 +1,30 @@
 version: "3.8"
 
 services:
-  frontend:
-    build:
-      context: ./frontend
-    volumes:
-      - react_build:/react/build
-    stdin_open: true
-
   backend:
     build:
       context: .
-    ports:
-      - "8000:8000"
+    volumes:
+      - .:/app2
+      - static_volume:/app2/staticfiles
+      - media_volume:/app2/mediafiles   
+    expose:
+      - 8000
 
   nginx:
     build:
-      context: ./nginx
+      context: ./frontend
     ports:
-      - 80:80
+      - "80:80"
     volumes:
-      - react_build:/var/www/react
+      - static_volume:/app2/staticfiles
+      - media_volume:/app2/mediafiles    
     depends_on:
-      - frontend
       - backend
 
 
 volumes:
-  react_build:
+  static_volume:
+  media_volume:
 
 

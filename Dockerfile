@@ -1,8 +1,8 @@
 FROM python:3.9-alpine
 
-WORKDIR /app
+WORKDIR /app2
 
-COPY . /app
+COPY . /app2
 
 COPY requirements.txt ./
 
